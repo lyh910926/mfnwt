@@ -12,7 +12,6 @@ C     ******************************************************************
       end type check_bot      
       public check_bot
       CONTAINS
-      
       FUNCTION ICHKSTRBOT(self)
       type (check_bot), intent(in) :: self
       INTEGER JRCH,IRCH,KRCH,JSEG,ISEG,ICHKSTRBOT
@@ -3510,7 +3509,7 @@ C75-----STORE FLOWS NEEDED FOR SENSITIVITIES. - ERB
               SFRQ(2, l) = (qc + qd)/2.0
               SFRQ(3, l) = flobot
               SFRQ(5, l) = qc
-      END IF
+            END IF
 C
 C76-----ADD TERMS TO RHS AND HCOF IF FLOBOT IS NOT ZERO.
           IF ( irt.EQ.numdelt ) THEN
@@ -8514,7 +8513,7 @@ C     SEGMENTS.
 C     *******************************************************************
       USE GWFSFRMODULE, ONLY: NSS, SEG, IDIVAR, FXLKOT, SGOTFLW
       USE GWFBASMODULE, ONLY: DELT,TOTIM   !delete totim
-      USE GWFAGMODULE, only:demand !delete this
+!      USE GWFAGMODULE, only:demand !delete this
       IMPLICIT NONE
 C     -------------------------------------------------------------------
 C     SPECIFICATIONS:
@@ -8528,12 +8527,12 @@ C     -------------------------------------------------------------------
 C     LOCAL VARIABLES
 C     -------------------------------------------------------------------
       INTEGER :: ISEG
-      double precision :: total !delete this
+!      double precision :: total !delete this
 C     -------------------------------------------------------------------
 C
 C1------LOOP OVER SEGMETS
 C
-        total = 0.0
+!        total = 0.0
         DO ISEG = 1, NSS
 C
 C4------APPLY DIVERSION AMOUNT TO SFR SEGMENT INFLOW.
@@ -8543,7 +8542,7 @@ C
             IF ( IDIVAR(1,iseg).LT.0 ) THEN
               FXLKOT(iseg) = SEG(2, iseg)
             END IF
-            total = total + Diversions(ISEG)/DELT
+!            total = total + Diversions(ISEG)/DELT
           END IF
         END DO
 C

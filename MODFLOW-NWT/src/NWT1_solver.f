@@ -863,7 +863,7 @@ C-------STRAIGHT LINE WITH PARABOLIC SMOOTHING
      +                      Iunitchd, Igrid)
 ! Builds and Solves Jacobian
 ! Calls various unstructured linear solvers to solve Jacobian
-      USE GLOBAL, ONLY:Iout,ISSFLG !,HNEW,botm
+      USE GLOBAL, ONLY:Iout,ISSFLG
 !!      USE GLOBAL, ONLY:Ncol, Nrow, Nlay, Ibound, Hcof, Rhs, Iout,botm,
 !!     +                 LBOTM, HOLD, HNEW, DELR, DELC, ISSFLG
 !!      USE GWFBASMODULE, ONLY:TOTIM, HNOFLO
@@ -1146,8 +1146,8 @@ C--Update heads.
           ELSE
             WRITE (Iout, 9002) II,itreal,n_iter,ichld,irhld,ilhld,fhead,
      +                   icfld,irfld,ilfld,fflux,RMS1
-!     +      HNEW(ichld,irhld,ilhld),BOTM(ichld,irhld,ilhld-1),
-!     +      BOTM(ichld,irhld,ilhld)
+ !    +      HNEW(ichld,irhld,ilhld),BOTM(ichld,irhld,ilhld-1),
+ !    +      BOTM(ichld,irhld,ilhld)
           END IF
         END IF
       END IF
@@ -1434,11 +1434,11 @@ C-----SET HNEW TO HDRY IF IPHRY>0
       term2 = (-Cvm1-Ccm1-Crm1-Crr-Ccc-Cvv+Hcoff)*H
       term3 = Crr*Hcp1 + Ccc*Hrp1 + Cvv*Hvp1 - Rhss
       GW_func = term1 + term2 + term3
-  !    if(ic==134.and.ir==108.and.il==4)then
-  !    write(888,222)ic,ir,il,cvm1*(Hvm1-h),ccm1*(hrm1-h),crm1*(hcm1-h),
-  !   +cvv*(hvp1-h),ccc*(hrp1-h),crr*(hcp1-h),hcoff,h,rhss,gw_func
-  !    end if
-  !222 format(3i5,10e20.10)
+ !     if(ic==250.and.ir==370.and.il==4)then
+ !     write(iout,222)ic,ir,il,cvm1*(Hvm1-h),ccm1*(hrm1-h),crm1*(hcm1-h),
+ !    +cvv*(hvp1-h),ccc*(hrp1-h),crr*(hcp1-h),hcoff,h,rhss,gw_func
+ !     end if
+ ! 222 format(3i5,10e20.10)
       END FUNCTION GW_func
 !
 !
